@@ -1,1 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevate — Marketing & Events Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2EEE3;
+    --ink:#1C1B17;
+    --signal:#FF5A36;
+    --moss:#4B5842;
+    --sand:#E7DFCB;
+    --charcoal:#1B1A16;
+    --line: rgba(28,27,23,0.14);
+  }
 
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer; border:none; background:none; color:inherit;}
+  ul{list-style:none;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--moss);
+  }
+
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  h1,h2,h3{
+    font-family:'Big Shoulders Display', sans-serif;
+    text-transform:uppercase;
+    line-height:0.92;
+    letter-spacing:0.01em;
+    font-weight:900;
+  }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--signal);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  /* ============ HEADER ============ */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(242,238,227,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    max-width:1240px;
+    margin:0 auto;
+    gap:24px;
+  }
+  .logo{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:900;
+    font-size:1.5rem;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    display:flex;
+    flex-direction:column;
+    line-height:0.95;
+  }
+  .logo span{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:500;
+    font-size:0.6rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--moss);
+    margin-top:2px;
+  }
+  .nav-pills{
+    display:flex;
+    gap:6px;
+    background:var(--sand);
+    padding:5px;
+    border-radius:100px;
+  }
+  .nav-pills a{
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    padding:9px 18px;
+    border-radius:100px;
+    transition:background 0.2s ease, color 0.2s ease;
+    white-space:nowrap;
+  }
+  .nav-pills a:hover{ background:var(--ink); color:var(--paper); }
+
+  .nav-cta{
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    padding:11px 22px;
+    border-radius:100px;
+    background:var(--signal);
+    color:var(--paper);
+    white-space:nowrap;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .nav-cta:hover{ transform:translateY(-2px); box-shadow:0 6px 16px rgba(255,90,54,0.35); }
+
+  .nav-toggle{ display:none; }
+
+  @media (max-width: 860px){
+    .nav-pills{ display:none; }
+    .nav-toggle{
+      display:block;
+      font-family:'IBM Plex Mono', monospace;
+      font-size:0.7rem;
+      text-transform:uppercase;
+      letter-spacing:0.1em;
+      border:1px solid var(--ink);
+      padding:8px 12px;
+      border-radius:100px;
+    }
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    padding:88px 32px 60px;
+    position:relative;
+  }
+  .hero-inner{
+    max-width:1240px;
+    margin:0 auto;
+    position:relative;
+  }
+  .hero h1{
+    font-size:clamp(2.8rem, 7.4vw, 6.4rem);
+    max-width:15ch;
+    margin-top:18px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--signal);
+  }
+  .hero-sub{
+    max-width:46ch;
+    font-size:1.05rem;
+    line-height:1.55;
+    color:rgba(28,27,23,0.78);
+    margin-top:26px;
+  }
+  .hero-actions{
+    display:flex;
+    gap:14px;
+    margin-top:36px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-size:0.82rem;
+    font-weight:700;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    padding:15px 30px;
+    border-radius:100px;
+    transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+    display:inline-block;
+  }
+  .btn-primary{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 8px 20px rgba(28,27,23,0.25); }
+  .btn-outline{
+    border:1.5px solid var(--ink);
+  }
+  .btn-outline:hover{ background:var(--ink); color:var(--paper); }
+
+  /* marquee */
+  .marquee{
+    margin-top:70px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:16px 0;
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .marquee-track{
+    display:inline-flex;
+    gap:40px;
+    animation:scroll 26s linear infinite;
+  }
+  .marquee-track span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(28,27,23,0.55);
+    display:flex;
+    align-items:center;
+    gap:40px;
+  }
+  .marquee-track span::after{
+    content:"·";
+    color:var(--signal);
+    font-size:1.1rem;
+  }
+  @keyframes scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+
+  /* ============ SECTION HEADS ============ */
+  .section{ padding:110px 32px; }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    margin-bottom:52px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-size:clamp(2.2rem, 5vw, 3.6rem);
+    margin-top:12px;
+  }
+  .section-head p{
+    max-width:34ch;
+    color:rgba(28,27,23,0.7);
+    line-height:1.5;
+    font-size:0.95rem;
+  }
+
+  /* ============ SERVICES ============ */
+  .filter-pills{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:44px;
+  }
+  .filter-pills button{
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:11px 22px;
+    border-radius:100px;
+    border:1.5px solid var(--ink);
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .filter-pills button.active,
+  .filter-pills button:hover{
+    background:var(--ink);
+    color:var(--paper);
+  }
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:2px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media (max-width: 900px){
+    .cards{ grid-template-columns:repeat(2, 1fr); }
+  }
+  @media (max-width: 620px){
+    .cards{ grid-template-columns:1fr; }
+  }
+  .card{
+    background:var(--paper);
+    padding:40px 30px 30px;
+    min-height:280px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    transition:background 0.35s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+  .card.hidden{
+    display:none;
+  }
+  .card:hover{ background:var(--sand); }
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+  }
+  .card-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    border:1px solid var(--ink);
+    border-radius:100px;
+    padding:5px 11px;
+    color:var(--moss);
+    border-color:var(--moss);
+  }
+  .card h3{
+    font-size:2.4rem;
+    text-transform:lowercase;
+    margin-top:26px;
+    font-weight:700;
+  }
+  .card p{
+    font-size:0.9rem;
+    line-height:1.5;
+    color:rgba(28,27,23,0.72);
+    margin-top:14px;
+    max-width:32ch;
+  }
+
+  /* ============ PROCESS WHEEL ============ */
+  .process{
+    background:var(--charcoal);
+    color:var(--paper);
+  }
+  .process .eyebrow{ color:#B7C9A6; }
+  .process .section-head p{ color:rgba(242,238,227,0.65); }
+
+  .wheel-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  @media (max-width: 900px){
+    .wheel-layout{ grid-template-columns:1fr; }
+  }
+
+  .wheel-stage{
+    position:relative;
+    width:100%;
+    max-width:460px;
+    aspect-ratio:1/1;
+    margin:0 auto;
+  }
+  .wheel-ring{
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    border:1px dashed rgba(242,238,227,0.28);
+  }
+  .wheel-center{
+    position:absolute;
+    inset:14%;
+    border-radius:50%;
+    background:rgba(242,238,227,0.05);
+    border:1px solid rgba(242,238,227,0.16);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+  }
+  .wheel-center-num{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:900;
+    font-size:5.2rem;
+    color:var(--signal);
+    line-height:1;
+  }
+  .node{
+    position:absolute;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    background:var(--charcoal);
+    border:1.5px solid rgba(242,238,227,0.5);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:0.85rem;
+    transition:background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, color 0.25s ease;
+    transform:translate(-50%, -50%);
+  }
+  .node:hover{ border-color:var(--signal); }
+  .node.active{
+    background:var(--signal);
+    border-color:var(--signal);
+    color:var(--charcoal);
+    transform:translate(-50%, -50%) scale(1.12);
+  }
+  .node-label{
+    position:absolute;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    white-space:nowrap;
+    color:rgba(242,238,227,0.7);
+  }
+
+  .stage-detail .eyebrow{ color:#B7C9A6; margin-bottom:6px; display:block; }
+  .stage-detail h3{
+    font-size:clamp(2rem, 4vw, 3.2rem);
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .stage-detail p{
+    font-size:1rem;
+    line-height:1.65;
+    color:rgba(242,238,227,0.75);
+    max-width:44ch;
+  }
+  .stage-list{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    margin-top:30px;
+    border-top:1px solid rgba(242,238,227,0.16);
+  }
+  .stage-list li button{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 0;
+    border-bottom:1px solid rgba(242,238,227,0.16);
+    text-align:left;
+  }
+  .stage-list li button span.num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    color:rgba(242,238,227,0.5);
+    margin-right:14px;
+  }
+  .stage-list li button span.title{
+    font-weight:600;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    font-size:0.92rem;
+    flex:1;
+  }
+  .stage-list li button.active span.title{ color:var(--signal); }
+  .stage-list{ display:none; }
+  @media (max-width: 900px){
+    .stage-list{ display:flex; }
+  }
+
+  /* ============ ABOUT / PROOF ============ */
+  .proof{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:70px;
+    align-items:start;
+  }
+  @media (max-width: 860px){
+    .proof{ grid-template-columns:1fr; gap:50px; }
+  }
+  .proof-copy h2{
+    font-size:clamp(2rem, 4.6vw, 3.2rem);
+    margin-top:14px;
+  }
+  .proof-copy p{
+    margin-top:22px;
+    line-height:1.65;
+    font-size:1rem;
+    color:rgba(28,27,23,0.78);
+    max-width:52ch;
+  }
+  .stat-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .stat{
+    background:var(--paper);
+    padding:32px 26px;
+  }
+  .stat-num{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:900;
+    font-size:2.6rem;
+    color:var(--signal);
+    line-height:1;
+  }
+  .stat-label{
+    margin-top:10px;
+    font-size:0.82rem;
+    color:rgba(28,27,23,0.68);
+    line-height:1.4;
+  }
+
+  /* ============ CONTACT ============ */
+  .contact{
+    background:var(--ink);
+    color:var(--paper);
+    text-align:center;
+  }
+  .contact .eyebrow{ color:#FFB199; }
+  .contact h2{
+    font-size:clamp(2.6rem, 8vw, 5.6rem);
+    margin-top:16px;
+    max-width:16ch;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .contact p{
+    margin-top:22px;
+    max-width:40ch;
+    margin-left:auto;
+    margin-right:auto;
+    color:rgba(242,238,227,0.68);
+    line-height:1.6;
+  }
+  .contact-actions{
+    margin-top:38px;
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .contact .btn-primary{
+    background:var(--signal);
+  }
+  .contact .btn-outline{
+    border-color:rgba(242,238,227,0.5);
+  }
+  .contact .btn-outline:hover{ background:var(--paper); color:var(--ink); }
+
+  footer{
+    padding:30px 32px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:rgba(242,238,227,0.45);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">ELEVATE<span>Marketing &amp; Events Studio</span></div>
+    <nav class="nav-pills" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Let's Talk</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Marketing &amp; Events Studio — Phoenix, AZ</p>
+    <h1>We make B2B brands <em>impossible</em> to walk past.</h1>
+    <p class="hero-sub">Booth strategy, brand systems, and outreach that turns a conference floor into pipeline. Elevate plans the room, designs the look, and works the follow-up — so your brand shows up like it means it.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#services">See the Services</a>
+      <a class="btn btn-outline" href="#contact">Book a Call</a>
+    </div>
+  </div>
+  <div class="marquee" role="presentation">
+    <div class="marquee-track">
+      <span>Cybersecurity</span><span>SaaS</span><span>Compliance</span><span>B2B Sales</span><span>Trade Shows</span><span>Booth Design</span><span>Cybersecurity</span><span>SaaS</span><span>Compliance</span><span>B2B Sales</span><span>Trade Shows</span><span>Booth Design</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">What We Do</p>
+        <h2>Capabilities</h2>
+      </div>
+      <p>Filter by what you actually need — a room, a look, or the meetings to fill it.</p>
+    </div>
+
+    <div class="filter-pills" role="tablist" aria-label="Filter services">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="events">Events</button>
+      <button data-filter="brand">Brand</button>
+      <button data-filter="outreach">Outreach</button>
+    </div>
+
+    <div class="cards">
+      <div class="card" data-cat="events">
+        <div class="card-top"><span class="card-tag">Events</span></div>
+        <div>
+          <h3>booth</h3>
+          <p>Conference and trade show booths, from 3D mockup to floor-ready build. Layout, signage, and flow that pulls people in off the aisle.</p>
+        </div>
+      </div>
+      <div class="card" data-cat="brand">
+        <div class="card-top"><span class="card-tag">Brand</span></div>
+        <div>
+          <h3>systems</h3>
+          <p>Identity and visual systems that hold up on a show floor and a landing page — one language, every touchpoint.</p>
+        </div>
+      </div>
+      <div class="card" data-cat="outreach">
+        <div class="card-top"><span class="card-tag">Outreach</span></div>
+        <div>
+          <h3>outreach</h3>
+          <p>Pre-event prospecting — LinkedIn and email sequences that get real meetings booked before you ever unroll the banner.</p>
+        </div>
+      </div>
+      <div class="card" data-cat="events">
+        <div class="card-top"><span class="card-tag">Events</span></div>
+        <div>
+          <h3>swag</h3>
+          <p>Merch and collateral people actually keep past the airport. Sourced, branded, and shipped on schedule.</p>
+        </div>
+      </div>
+      <div class="card" data-cat="brand">
+        <div class="card-top"><span class="card-tag">Brand</span></div>
+        <div>
+          <h3>assets</h3>
+          <p>Sales decks, banners, one-pagers, and social templates your team can actually use without calling us every time.</p>
+        </div>
+      </div>
+      <div class="card" data-cat="outreach">
+        <div class="card-top"><span class="card-tag">Outreach</span></div>
+        <div>
+          <h3>pipeline</h3>
+          <p>Post-event follow-up systems that turn a stack of badge scans into a real pipeline instead of a dead spreadsheet.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section process" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">How It Works</p>
+        <h2>Five stages,<br>one thread.</h2>
+      </div>
+      <p>Every project moves through the same loop — tap a stage to see what happens in it.</p>
+    </div>
+
+    <div class="wheel-layout">
+      <div class="wheel-stage">
+        <div class="wheel-ring"></div>
+        <div class="wheel-center">
+          <div>
+            <div class="wheel-center-num" id="stageNum">01</div>
+          </div>
+        </div>
+        <!-- nodes positioned around circle -->
+        <button class="node active" data-stage="0" style="top:0%; left:50%;" aria-label="Scout">SC</button>
+        <button class="node" data-stage="1" style="top:29%; left:97%;" aria-label="Design">DS</button>
+        <button class="node" data-stage="2" style="top:82%; left:82%;" aria-label="Build">BD</button>
+        <button class="node" data-stage="3" style="top:82%; left:18%;" aria-label="Work the Room">WR</button>
+        <button class="node" data-stage="4" style="top:29%; left:3%;" aria-label="Follow Through">FT</button>
+      </div>
+
+      <div class="stage-detail">
+        <span class="eyebrow" id="stageEyebrow">Stage 01 / 05</span>
+        <h3 id="stageTitle">Scout</h3>
+        <p id="stageBody">We start with the floor plan and the goal: which show, which booth spot, which buyers you actually need to talk to. No design work starts until the target is clear.</p>
+
+        <ul class="stage-list" aria-label="Process stages">
+          <li><button class="active" data-stage="0"><span class="num">01</span><span class="title">Scout</span></button></li>
+          <li><button data-stage="1"><span class="num">02</span><span class="title">Design</span></button></li>
+          <li><button data-stage="2"><span class="num">03</span><span class="title">Build</span></button></li>
+          <li><button data-stage="3"><span class="num">04</span><span class="title">Work the Room</span></button></li>
+          <li><button data-stage="4"><span class="num">05</span><span class="title">Follow Through</span></button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="proof">
+      <div class="proof-copy">
+        <p class="eyebrow">About Elevate</p>
+        <h2>Run by someone who's worked both sides of the booth.</h2>
+        <p>Elevate is built on time spent doing the parts most agencies outsource — pitching the client, designing the booth, standing in it, and closing the deals that came out of it. That means the strategy isn't theoretical. It's been tested on an actual show floor, with an actual quota.</p>
+        <p>We work close and lean: one point of contact, real turnaround times, and a look that doesn't get lost between the deck and the day of the event.</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-num">01</div>
+          <div class="stat-label">National sales ranking earned before going independent</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3D</div>
+          <div class="stat-label">Booth mockups built before a single wall is fabricated</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">B2B</div>
+          <div class="stat-label">Focus on cybersecurity, compliance &amp; SaaS floors</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">AZ</div>
+          <div class="stat-label">Based in Phoenix, working shows nationwide</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Start a Project</p>
+    <h2>Ready to show up different?</h2>
+    <p>Tell us the show, the goal, and the deadline. We'll tell you what it takes to make the booth the one people remember.</p>
+    <div class="contact-actions">
+      <a class="btn btn-primary" href="mailto:hello@elevatemarketingevents.com">Email Us</a>
+      <a class="btn btn-outline" href="#services">View Services</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Elevate Marketing &amp; Events — Phoenix, AZ</span>
+  <span>&copy; 2026</span>
+</footer>
+
+<script>
+  // Service filter
+  const filterButtons = document.querySelectorAll('.filter-pills button');
+  const cards = document.querySelectorAll('.card');
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      cards.forEach(card => {
+        if(filter === 'all' || card.dataset.cat === filter){
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Process wheel
+  const stages = [
+    {
+      title: 'Scout',
+      num: '01',
+      body: "We start with the floor plan and the goal: which show, which booth spot, which buyers you actually need to talk to. No design work starts until the target is clear."
+    },
+    {
+      title: 'Design',
+      num: '02',
+      body: "Booth layout, brand look, and messaging get mocked up in 3D before anything is built — so you're approving a room, not a rendering guess."
+    },
+    {
+      title: 'Build',
+      num: '03',
+      body: "Signage, banners, swag, and collateral get produced and shipped on a schedule that has the booth standing before doors open, not the morning of."
+    },
+    {
+      title: 'Work the Room',
+      num: '04',
+      body: "On-site coordination and booth presence — someone who knows the pitch is standing in the space, not just watching it happen from a hotel room."
+    },
+    {
+      title: 'Follow Through',
+      num: '05',
+      body: "Every badge scan and business card gets a next step within 48 hours, so the booth traffic actually turns into pipeline instead of a forgotten spreadsheet."
+    }
+  ];
+
+  const nodeButtons = document.querySelectorAll('.node');
+  const listButtons = document.querySelectorAll('.stage-list button');
+  const stageNum = document.getElementById('stageNum');
+  const stageEyebrow = document.getElementById('stageEyebrow');
+  const stageTitle = document.getElementById('stageTitle');
+  const stageBody = document.getElementById('stageBody');
+
+  function setStage(i){
+    const s = stages[i];
+    stageNum.textContent = s.num;
+    stageEyebrow.textContent = `Stage ${s.num} / 05`;
+    stageTitle.textContent = s.title;
+    stageBody.textContent = s.body;
+    nodeButtons.forEach(n => n.classList.toggle('active', n.dataset.stage === String(i)));
+    listButtons.forEach(n => n.classList.toggle('active', n.dataset.stage === String(i)));
+  }
+
+  [...nodeButtons, ...listButtons].forEach(btn => {
+    btn.addEventListener('click', () => setStage(Number(btn.dataset.stage)));
+  });
+</script>
+
+</body>
+</html>
